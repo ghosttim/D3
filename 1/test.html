@@ -2,17 +2,17 @@
 <html>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-	<title>D3</title>
+    <title>D3</title>
 <style type="text/css">
-	body{
-		margin: 0;
-		padding: 0;
-	}
-	rect{
-		fill: orange;
-		stroke-width: 3;
-		stroke: orangered;
-	}
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    rect{
+        fill: orange;
+        stroke-width: 3;
+        stroke: orangered;
+    }
 </style>
 </head>
 <body>
@@ -24,36 +24,33 @@
 </body>
 
 <script type="text/javascript">
-	var coords = [
-	{x: 10, y: 10},{x: 70, y: 10},{x: 130, y: 10},{x: 190, y: 10},{x: 250, y: 10},{x: 310, y: 10},{x: 370, y: 10},{x: 430, y: 10},{x: 490, y: 10},{x: 550, y: 10},
-	{x: 10, y: 70},{x: 70, y: 70},{x: 130, y: 70},{x: 190, y: 70},{x: 250, y: 70},{x: 310, y: 70},{x: 370, y: 70},{x: 430, y: 70},{x: 490, y: 70},{x: 550, y: 70},
-	{x: 10, y: 130},{x: 70, y: 130},{x: 130, y: 130},{x: 190, y: 130},{x: 250, y: 130},{x: 310, y: 130},{x: 370, y: 130},{x: 430, y: 130},{x: 490, y: 130},{x: 550, y: 130},
-	{x: 10, y: 190},{x: 70, y: 190},{x: 130, y: 190},{x: 190, y: 190},{x: 250, y: 190},{x: 310, y: 190},{x: 370, y: 190},{x: 430, y: 190},{x: 490, y: 190},{x: 550, y: 190},
-	{x: 10, y: 250},{x: 70, y: 250},{x: 130, y: 250},{x: 190, y: 250},{x: 250, y: 250},{x: 310, y: 250},{x: 370, y: 250},{x: 430, y: 250},{x: 490, y: 250},{x: 550, y: 250},
-	{x: 10, y: 310},{x: 70, y: 310},{x: 130, y: 310},{x: 190, y: 310},{x: 250, y: 310},{x: 310, y: 310},{x: 370, y: 310},{x: 430, y: 310},{x: 490, y: 310},{x: 550, y: 310},
-	{x: 10, y: 370},{x: 70, y: 370},{x: 130, y: 370},{x: 190, y: 370},{x: 250, y: 370},{x: 310, y: 370},{x: 370, y: 370},{x: 430, y: 370},{x: 490, y: 370},{x: 550, y: 370},
-	{x: 10, y: 430},{x: 70, y: 430},{x: 130, y: 430},{x: 190, y: 430},{x: 250, y: 430},{x: 310, y: 430},{x: 370, y: 430},{x: 430, y: 430},{x: 490, y: 430},{x: 550, y: 430},
-	{x: 10, y: 490},{x: 70, y: 490},{x: 130, y: 490},{x: 190, y: 490},{x: 250, y: 490},{x: 310, y: 490},{x: 370, y: 490},{x: 430, y: 490},{x: 490, y: 490},{x: 550, y: 490},
-	{x: 10, y: 550},{x: 70, y: 550},{x: 130, y: 550},{x: 190, y: 550},{x: 250, y: 550},{x: 310, y: 550},{x: 370, y: 550},{x: 430, y: 550},{x: 490, y: 550},{x: 550, y: 550},
-	];
-	var svg = d3.select("svg");
-	var rects = svg.selectAll("rects").data(coords);
 
-	rects.enter().append("rect")
-	             .attr("width",45)
-	             .attr("height", 45)
-	             .attr("rx", 10)
-	             .attr("x", function(d,i){return d.x})
-	             .attr("y", function(d,i){return d.y});
-	rects
-	             .attr("width",45)
-	             .attr("height", 45)
-	             .classed("point", true)
-	             .classed("point-large", true)
-	             .attr("x", function(d,i) {return d.x;})
-	             .attr("y", function(d,i) {return d.y;})
-	             .html("<div></div>");
-	rects.exit().remove();
+var a = 10;
+var b = 10;
+var svg = d3.select("svg");
 
+function start(num) {
+if (num >= 100)return;
+
+     svg.append("rect")
+        .attr("width",45)
+        .attr("height", 45)
+        .attr("rx", 10)
+        .attr("x", a)
+        .attr("y", b)
+    
+
+if (a >= 460){
+     a = 10;
+     b = b + 50;
+    }else {
+        a = a + 50;
+    }
+    
+
+     start(++num);
+    }
+
+   start(0);
 </script>
 </html>
